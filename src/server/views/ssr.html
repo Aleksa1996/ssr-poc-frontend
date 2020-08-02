@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {{ helmet.title.toString() }}
+    {{ helmet.meta.toString() }}
+    {{ helmet.link.toString() }}
+
+    {% for cssBundle in cssBundles %}
+    <link rel="stylesheet" type="text/css" href="{{ cssBundle }}" />
+    {% endfor %}
+</head>
+
+<body>
+
+    <div id="react-app">{{ reactDom }}</div>
+
+    <script>
+        window.__PRELOADED_STATE__ = JSON.parse('{{ reduxState }}');
+    </script>
+
+    {{ helmet.script.toString() }}
+
+    {% for jsBundle in jsBundles %}
+    <script src="{{ jsBundle }}"></script>
+    {% endfor %}
+</body>
+
+</html>
